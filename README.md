@@ -1,16 +1,50 @@
-# netflix
+# 🎬 Netflix Clone App
 
-A new Flutter project.
+A **Flutter-based Netflix-style streaming UI** that fetches real-time movies and series from an external API.  
+The app features dynamic content loading, a structured BLoC architecture, and smooth UI animations to deliver a premium streaming experience.
 
-## Getting Started
+---
 
-This project is a starting point for a Flutter application.
+## 🌟 Features
 
-A few resources to get you started if this is your first Flutter project:
+● **Real-time Movie & Series Fetching**  
+   Fetches trending, popular, and top-rated movies using live APIs with efficient JSON parsing.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+● **Clean BLoC Architecture**  
+   Uses BLoC for predictable, scalable, and testable state management.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+● **Category-wise Content Browsing**  
+   Movies and shows are organized into multiple sections, similar to Netflix UI.
+
+● **Interactive UI/UX**  
+   Scrollable movie rows, posters, banners, and smooth transitions for a real OTT feel.
+
+---
+
+## 🛠️ Technology Stack
+
+- **Flutter**
+- **Dart**
+- **BLoC (Business Logic Component)**
+- **HTTP package**
+- **JSON Parsing**
+- **youtube_player_flutter**
+
+---
+
+## 📁 Project Structure
+
+lib/
+├── models/ # Data models for movies/series
+├── screens/ # UI screens (Home, Details, Trailer, etc.)
+├── services/ # API services (fetch movie data)
+├── widgets/ # Custom reusable widgets
+└── main.dart # App entry point
+
+---
+
+<p align="center">
+  <img src="screenshots/home.jpg" width="2100">
+  <img src="screenshots/details.jpg" width="210">
+  <img src="screenshots/player.jpg" width="210">
+</p>
