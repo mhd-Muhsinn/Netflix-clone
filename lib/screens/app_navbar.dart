@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:netflix/screens/downloads_screen.dart';
 import 'package:netflix/screens/home_screen.dart';
 import 'package:netflix/screens/search_screen.dart';
 
@@ -15,14 +16,14 @@ class AppNavbar extends StatelessWidget {
         child:TabBar(tabs: [
           Tab(icon: Icon(Iconsax.home5),text: "Home"),
           Tab(icon: Icon(Iconsax.search_normal),text: "Search"),
-          Tab(icon: Icon(Icons.photo_library_outlined),text: "Hot News"),
+          Tab(icon: Icon(Icons.download),text: "Downloads"),
         ],
         unselectedLabelColor: Colors.grey,
         labelColor: Colors.white,
         indicatorColor: Colors.transparent,
         )),
         body: TabBarView(children: [
-          HomeScreen(),SearchScreen(),Scaffold()
+          HomeScreen(),SearchScreen(),DownloadsScreen()
         ]),
     ));
   }

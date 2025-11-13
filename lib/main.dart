@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:netflix/screens/splash_screen.dart';
 
 void main() {
+   
   SystemChrome.setSystemUIOverlayStyle(
     const SystemUiOverlayStyle(
       statusBarColor: Colors.black, // your desired color

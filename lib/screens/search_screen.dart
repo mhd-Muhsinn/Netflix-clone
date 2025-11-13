@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:netflix/models/search_screen_model.dart';
 import 'package:netflix/services/api_services.dart';
+import 'package:netflix/widgets/movie_tile.dart';
 
 class SearchScreen extends StatefulWidget {
   const SearchScreen({Key? key}) : super(key: key);
@@ -22,10 +23,7 @@ class _SearchScreenState extends State<SearchScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black,
-      appBar: AppBar(
-        title: const Text('Search Movies'),
-        backgroundColor: Colors.black,
-      ),
+
       body: Column(
         children: [
           // --- Search bar ---
@@ -48,11 +46,11 @@ class _SearchScreenState extends State<SearchScreen> {
               // You can wire up onChanged or onSubmitted here to refetch/filter
             ),
           ),
-
-          // --- Results list ---
+          Text("Top Searches",style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 18),),
           Expanded(
             child: FutureBuilder<SearchScreenModel>(
-              future: _searchData,                              // fetch once in initState :contentReference[oaicite:0]{index=0}
+              future:
+                  _searchData, // fetch once in initState :contentReference[oaicite:0]{index=0}
               builder: (context, snapshot) {
                 if (snapshot.connectionState == ConnectionState.waiting) {
                   return const Center(
@@ -77,28 +75,12 @@ class _SearchScreenState extends State<SearchScreen> {
                   );
                 }
 
-                return ListView.builder(                       // lazy‑build for long lists :contentReference[oaicite:1]{index=1}
+                return ListView.builder(
+                  // lazy‑build for long lists :contentReference[oaicite:1]{index=1}
                   itemCount: movies.length,
                   itemBuilder: (ctx, index) {
                     final movie = movies[index];
-                    return ListTile(
-                      leading: movie.thumbnail.isNotEmpty
-                          ? Image.network(
-                              movie.thumbnail,
-                              width: 60,
-                              height: 60,
-                              fit: BoxFit.cover,
-                            )
-                          : const Icon(Icons.movie, color: Colors.grey),
-                      title: Text(
-                        movie.title,
-                        style: const TextStyle(color: Colors.white),
-                      ),
-                      subtitle: Text(
-                        movie.description!,
-                        style: const TextStyle(color: Colors.grey),
-                      ),
-                    );
+                    return MediaCard(title: movie.title, imagePath: movie.thumbnail,onPressed: (){},);
                   },
                 );
               },
@@ -109,3 +91,6 @@ class _SearchScreenState extends State<SearchScreen> {
     );
   }
 }
+
+
+// add debouncer in the search functionality

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:netflix/models/home_page_model.dart';
 import 'package:netflix/services/api_services.dart';
 import 'package:netflix/widgets/app_bar.dart';
-import 'package:netflix/widgets/cotinu_watching.dart';
 import 'package:netflix/widgets/custom_container.dart';
 import 'package:netflix/widgets/movie_containers.dart';
 
@@ -19,8 +18,10 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     super.initState();
-    homePageData = ApiServices.fetchData();
+     homePageData = ApiServices.fetchData();
   }
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -54,20 +55,15 @@ class _HomeScreenState extends State<HomeScreen> {
               final model = snapshot.data!;
               final trending = model.trendingMovies.first;
 
-              // Build a single ListView that contains:
-              // 1. The big trending container
-              // 2. One section per Category in model.categories
               return ListView(
                 padding: EdgeInsets.zero,
-                children: [
-                  // 1️⃣ Trending
+                children:[
+
                   CustomNetflixContainer(
                     backgroundImage: trending.thumbnail,
                     title: trending.title,
-                    subtitle: trending.description ?? '',
+                    subtitle: trending.description !,
                   ),
-
-                  // 2️⃣ Dynamically render each category
                   ...model.categories.map((category) {
                     return Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -84,7 +80,6 @@ class _HomeScreenState extends State<HomeScreen> {
                             ),
                           ),
                         ),
-                        // Horizontal list of movies in this category
                         SizedBox(
                           height: 200,
                           child: ListView.builder(
@@ -94,7 +89,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               final movie = category.movies[idx];
                               return Padding(
                                 padding: const EdgeInsets.symmetric(horizontal: 4),
-                                child: category.name == "Continue Watching" ? ContinueWatchingCard(imageUrl: movie.thumbnail): MovieContainers(
+                                child: MovieContainers(
                                   imageUrl: movie.thumbnail,
                                 ),
                               );
@@ -103,7 +98,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                       ],
                     );
-                  }).toList(),
+                  }),
                 ],
               );
             },
