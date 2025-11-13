@@ -35,7 +35,7 @@ The app features dynamic content loading, a structured BLoC architecture, and sm
 ## 🗺️ Screenshots
 
 <p align="center">
-  <img src="screenshots/home.jpg" width="2100">
+  <img src="screenshots/home.jpg" width="210">
   <img src="screenshots/details.jpg" width="210">
   <img src="screenshots/player.jpg" width="210">
 </p>
